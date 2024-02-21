@@ -6,7 +6,7 @@ export default function Login() {
                     <h1 className="text-2xl font-bold tracking-wider">Login</h1>
                     <div className="flex my-4 rounded-xl">
                         <p className="bg-gradient-to-r from-blue-900 to-blue-300 text-white p-2 rounded-xl inline-block w-36">LogIn</p>
-                        <p className="p-2 rounded-xl ">SignUp</p>
+                        <p className="p-2 rounded-xl inline-block w-36 ">SignUp</p>
                     </div>
                     <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="text" placeholder="Email Address"/><br/><br/>
                     <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password"/><br/>
