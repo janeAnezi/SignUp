@@ -12,7 +12,10 @@ function App() {
   return (
     <>
       <div>
-      {isLoginPage ? <Login /> : <SignUp />}
+        <button onClick={togglePage}>
+            {isLoginPage ? 'Sign Up' : 'Log In'}
+        </button>
+        {isLoginPage ? <Login /> : <SignUp />}
       </div>
     </>
   )
