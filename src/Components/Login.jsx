@@ -15,7 +15,7 @@ export default function Login({ onSwitchToSignup }) {
                     <sub className="flex place-self-start text-blue-700 font-semibold text-base">Forgot Password?</sub><br/><br/>
                     <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit">LogIn</button>
 
-                    <p>Not a member? <a className="text-blue-700 font-semibold" href="signup.html">SignUp now</a></p>
+                    <p>Not a member? <a onClick={onSwitchToSignup} className="text-blue-700 font-semibold" href="#">SignUp now</a></p>
                 </form>
               
             </div>
