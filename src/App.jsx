@@ -7,27 +7,15 @@ function App() {
   const handlePageChange = (page) => {
     setActivePage(page);
   };
-  // const [isLoginPage, setIsLoginPage] = useState(true);
-  // const [activeButton, setActiveButton] = useState('login');
-  // function handleClick(e) {
-  //   if (e.target.id === activeButton) return;
-  //   setActiveButton(e.target.id);
-  //   setIsLoginPage(!isLoginPage);
-  // }
+  
   return (
     <div>
-      {activePage === 'SignUp' ? (
+      {activePage === 'Login' ? (
         <Login onSwitchToSignup={() => handlePageChange('SignUp')} />
       ) : (
         <SignUp onSwitchToLogin={() => handlePageChange('Login')} />
       )}
-      {/* <header> 
-        <button id="login" onClick={handleClick}>Login</button>
-        <button id="signup" onClick={handleClick}>Sign Up</button>
-      </header> */}
-      {/* <main>
-        { isLoginPage ? <Login /> : <SignUp />} 
-      </main> */}
+      
     </div>
   )
 
