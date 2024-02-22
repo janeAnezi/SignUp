@@ -1,20 +1,14 @@
-import React, { useState } from 'react';
 
-export default function Login() {
-    const [isLoginPage, setIsLoginPage] = useState(true);
-
-    const togglePage = () => {
-      setIsLoginPage(!isLoginPage);
-    };
-
+export default function Login({ onSwitchToSignup }) {
+    
     return (
         <>
             <div className="flex justify-center items-center mt-40 ">
                 <form action="#" className=" bg-white inline-block w-80 p-5 text-center rounded-lg">
                     <h1 className="text-2xl font-bold tracking-wider">Login</h1>
                     <div className="flex my-4 rounded-xl">
-                        <button onClick={togglePage} className="bg-gradient-to-r from-blue-900 to-blue-300 text-white p-2 rounded-xl inline-block w-36">{isLoginPage ? 'Sign Up' : 'Log In'}</button>
-                        <button className="p-2 rounded-xl inline-block w-36 ">SignUp</button>
+                        <button  className="bg-gradient-to-r from-blue-900 to-blue-300 text-white p-2 rounded-xl inline-block w-36">Login</button>
+                        <button onClick={onSwitchToSignup} className="p-2 rounded-xl inline-block w-36 ">SignUp</button>
                     </div>
                     <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="text" placeholder="Email Address"/><br/><br/>
                     <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password"/><br/>

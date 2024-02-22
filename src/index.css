@@ -5,3 +5,12 @@
 body {
   background: linear-gradient(90deg, rgb(1, 1, 62), rgb(2, 2, 94) 0%, 35%, rgb(46, 64, 165) 100%);
 }
+.login-page {
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.signup-page {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
