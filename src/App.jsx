@@ -10,10 +10,11 @@ function App() {
   
   return (
     <div>
-      {activePage === 'Login' ? (
-        <Login onSwitchToSignup={() => handlePageChange('SignUp')} />
-      ) : (
+      {activePage === 'SignUp' ? (
         <SignUp onSwitchToLogin={() => handlePageChange('Login')} />
+        
+      ) : (
+        <Login onSwitchToSignup={() => handlePageChange('SignUp')} />
       )}
       
     </div>
