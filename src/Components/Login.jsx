@@ -32,18 +32,11 @@ export default function Login({ onSwitchToSignup }) {
         if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
             errors.password = ('Password must contain at least one special character');
         }
-       
   
 
         return errors;
     };
 
-    const handlePasswordChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        const newErrors = validatePassword(newPassword);
-        setErrors(newErrors);
-      };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -68,16 +61,16 @@ export default function Login({ onSwitchToSignup }) {
                         <button onClick={onSwitchToSignup} className="p-2 rounded-xl inline-block w-36 cursor-pointer">SignUp</button>
                     </div>
                     <div>
-                        <input value={email} onChange={handlePasswordChange} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address"/><br/>
+                        <input value={email}  onChange={(e) => setEmail(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address"/><br/>
                         {errors.email && <span>{errors.email}</span>}
                         <br/>
                     </div>
                     <div>
                         <input value={password} onChange={(e) => setPassword(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password"/><br/>
-                        {errors.password && <span>{errors.password}</span>}
+                        {errors.password && <span className='text-red-600'>{errors.password}</span>}
                     </div>
                     <sub className="flex place-self-start text-blue-700 font-semibold text-base">Forgot Password?</sub><br/><br/>
-                    <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit" disabled={errors.length > 0}>LogIn</button>
+                    <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit" >LogIn</button>
 
                     <p>Not a member? <a onClick={onSwitchToSignup} className="text-blue-700 font-semibold" href="#">SignUp now</a></p>
                 </form>
