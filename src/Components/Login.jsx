@@ -42,9 +42,11 @@ export default function Login({ onSwitchToSignup }) {
         e.preventDefault();
         const errors = validateForm();
         if(Object.keys(errors).length === 0) {
-              // Clear email and password states
+            // Clear email and password states
                 setEmail('');
                 setPassword('');
+            // Clear errors
+                setErrors({});
             // submit to server here 
             alert('Form submitted successfully');
         } else {
