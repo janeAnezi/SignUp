@@ -1,17 +1,53 @@
-
+import React, { useState }  from 'react';
 export default function Login({ onSwitchToSignup }) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+
+    const validateForm = () => {
+        const errors = {};
+        if (!email) {
+            errors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            errors.email = 'Email address is not valid';
+        }
+
+        if(!password) {
+            errors.password = 'Password is required';
+        }
+        return errors;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const errors = validateForm();
+        if(Object.keys(errors).length === 0) {
+            // submit to server here
+            alert('Form submitted successfully');
+        } else {
+            setErrors(errors);
+        }
+    }
+
     
     return (
         <>
             <div className="flex justify-center items-center mt-40 ">
-                <form action="#" className=" bg-white inline-block w-80 p-5 text-center rounded-lg">
+                <form onSubmit={handleSubmit} className=" bg-white inline-block w-80 p-5 text-center rounded-lg">
                     <h1 className="text-2xl font-bold tracking-wider">Login</h1>
                     <div className="flex my-4 rounded-xl">
                         <button  className="bg-gradient-to-r from-blue-900 to-blue-300 text-white p-2 rounded-xl inline-block w-36 cursor-pointer">Login</button>
                         <button onClick={onSwitchToSignup} className="p-2 rounded-xl inline-block w-36 cursor-pointer">SignUp</button>
                     </div>
-                    <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="text" placeholder="Email Address"/><br/><br/>
-                    <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password"/><br/>
+                    <div>
+                        <input value={email} onChange={(e) => setEmail(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address"/><br/>
+                        {errors.email && <span>{errors.email}</span>}
+                        <br/>
+                    </div>
+                    <div>
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password"/><br/>
+                        {errors.password && <span>{errors.password}</span>}
+                    </div>
                     <sub className="flex place-self-start text-blue-700 font-semibold text-base">Forgot Password?</sub><br/><br/>
                     <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit">LogIn</button>
 
