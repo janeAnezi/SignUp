@@ -33,6 +33,10 @@ export default function Login({ onSwitchToSignup }) {
             errors.password = ('Password must contain at least one special character');
         }
   
+        if(Object.keys(errors).length === 0) {
+            // Clear errors
+                setErrors({});
+        }
 
         return errors;
     };
@@ -45,8 +49,7 @@ export default function Login({ onSwitchToSignup }) {
             // Clear email and password states
                 setEmail('');
                 setPassword('');
-            // Clear errors
-                setErrors({});
+                
             // submit to server here 
             alert('Form submitted successfully');
         } else {

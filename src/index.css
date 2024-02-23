@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background: linear-gradient(90deg, rgb(1, 1, 62), rgb(2, 2, 94) 0%, 35%, rgb(46, 64, 165) 100%);
+  background: linear-gradient(90deg, rgb(1, 1, 62), rgb(2, 2, 94) 0%, 35%, rgb(85, 108, 238) 100%);
 }
 .login-page {
   transform: translateX(0%);
