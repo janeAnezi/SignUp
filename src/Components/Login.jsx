@@ -41,6 +41,21 @@ export default function Login({ onSwitchToSignup }) {
         return errors;
     };
 
+    const handleChangeEmail = (e) => {
+        setEmail(e.target.value);
+        // Clear email error when typing
+        if (errors.email) {
+            setErrors(prevErrors => ({ ...prevErrors, email: '' }));
+        }
+    };
+
+    const handleChangePassword = (e) => {
+        setPassword(e.target.value);
+        // Clear email error when typing
+        if (errors.password) {
+            setErrors(prevErrors => ({ ...prevErrors, password: '' }));
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -49,7 +64,7 @@ export default function Login({ onSwitchToSignup }) {
             // Clear email and password states
                 setEmail('');
                 setPassword('');
-                
+
             // submit to server here 
             alert('Form submitted successfully');
         } else {
@@ -68,12 +83,12 @@ export default function Login({ onSwitchToSignup }) {
                         <button onClick={onSwitchToSignup} className="p-2 rounded-xl inline-block w-36 cursor-pointer">SignUp</button>
                     </div>
                     <div>
-                        <input value={email}  onChange={(e) => setEmail(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address" required/><br/>
+                        <input value={email}  onChange={handleChangeEmail} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address" required/><br/>
                         {errors.email && <span className='text-red-600 text-xs text-left'>{errors.email}</span>}
                         <br/>
                     </div>
                     <div>
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password" required/><br/>
+                        <input value={password} onChange={handleChangePassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password" required/><br/>
                         {errors.password && <span className='text-red-600 text-xs'>{errors.password}</span>}
                     </div>
                     <sub className="flex place-self-start text-blue-700 font-semibold text-base">Forgot Password?</sub><br/><br/>
