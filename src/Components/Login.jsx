@@ -12,17 +12,45 @@ export default function Login({ onSwitchToSignup }) {
             errors.email = 'Email address is not valid';
         }
 
-        if(!password) {
-            errors.password = 'Password is required';
+        // check length
+        if(password.length < 8) {
+            errors.password = ('Password must be at least 8 characters long');
         }
+        // check for uppercase letters
+        if(!/[A-Z]/.test(password)) {
+            errors.password = ('Password must contain at least one uppercase letter');
+        }
+        // check for lowercase letters
+        if(!/[a-z]/.test(password)) {
+            errors.push('Password must contain at least one lowercase letter');
+        }
+        // check for numbers
+        if (!/\d/.test(password)) {
+            errors.password = ('Password must contain at least one number');
+        }
+        // Check for special characters
+        if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
+            errors.password = ('Password must contain at least one special character');
+        }
+       
+  
+
         return errors;
     };
+
+    const handlePasswordChange = (e) => {
+        const newPassword = e.target.value;
+        setPassword(newPassword);
+        const newErrors = validatePassword(newPassword);
+        setErrors(newErrors);
+      };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = validateForm();
         if(Object.keys(errors).length === 0) {
             // submit to server here
+            errors.email = ''; 
             alert('Form submitted successfully');
         } else {
             setErrors(errors);
@@ -40,7 +68,7 @@ export default function Login({ onSwitchToSignup }) {
                         <button onClick={onSwitchToSignup} className="p-2 rounded-xl inline-block w-36 cursor-pointer">SignUp</button>
                     </div>
                     <div>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address"/><br/>
+                        <input value={email} onChange={handlePasswordChange} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address"/><br/>
                         {errors.email && <span>{errors.email}</span>}
                         <br/>
                     </div>
@@ -49,7 +77,7 @@ export default function Login({ onSwitchToSignup }) {
                         {errors.password && <span>{errors.password}</span>}
                     </div>
                     <sub className="flex place-self-start text-blue-700 font-semibold text-base">Forgot Password?</sub><br/><br/>
-                    <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit">LogIn</button>
+                    <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit" disabled={errors.length > 0}>LogIn</button>
 
                     <p>Not a member? <a onClick={onSwitchToSignup} className="text-blue-700 font-semibold" href="#">SignUp now</a></p>
                 </form>
