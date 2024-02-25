@@ -1,5 +1,10 @@
-import { validateForm} from './src/Components/Login.jsx';
+import { validateForm} from './Login';
 export default function SignUp({ onSwitchToLogin }) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+
+    const formValidation = validateForm();
    
     return (
         <>
