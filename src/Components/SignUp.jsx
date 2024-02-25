@@ -1,4 +1,4 @@
-
+import { validateForm} from './src/Components/Login.jsx';
 export default function SignUp({ onSwitchToLogin }) {
    
     return (
