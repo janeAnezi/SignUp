@@ -2,6 +2,7 @@ import React, { useState }  from 'react';
 export default function SignUp({ onSwitchToLogin }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] =  useState('');
     const [errors, setErrors] = useState({});
 
     const validateForm = () => {
@@ -79,10 +80,19 @@ export default function SignUp({ onSwitchToLogin }) {
                         <p onClick={onSwitchToLogin} className=" p-2 rounded-xl inline-block w-36 cursor-pointer">LogIn</p>
                         <p className="p-2 rounded-xl bg-gradient-to-r from-blue-300 to-blue-900 text-white inline-block w-36 cursor-pointer">SignUp</p>
                     </div>
-                    <input onChange={handleChangeEmail}  className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="text" placeholder="Email Address"/><br/><br/>
-                    <input onChange={handleChangePassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password"/><br/><br/>
-                    <input className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="confirm Password"/><br/><br/>
-                   
+                    <div>
+                        <input value={email}  onChange={handleChangeEmail} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="email" placeholder="Email Address" required/><br/>
+                        {errors.email && <span className='text-red-600 text-xs text-left'>{errors.email}</span>}
+                        <br/>
+                    </div>
+                    <div>
+                        <input value={password} onChange={handleChangePassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password" required/><br/>
+                        {errors.password && <span className='text-red-600 text-xs'>{errors.password}</span>}
+                    </div>
+                    <div>
+                        <input value={password} onChange={handleChangePassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Confirm Password" required/><br/>
+                        {errors.password && <span className='text-red-600 text-xs'>{errors.password}</span>}
+                    </div>
                     <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit">SignUp</button>
 
                     <p>Already a member? <a onClick={onSwitchToLogin} className="text-blue-700 font-semibold" href='#'>Login</a></p>
