@@ -64,7 +64,7 @@ export default function SignUp({ onSwitchToLogin }) {
     const handleConfirmpassword = (e) => {
         setConfirmPassword(e.target.value);
          // Clear email error when typing
-         if (errors.password) {
+         if (errors.confirmPassword) {
             setErrors(prevErrors => ({ ...prevErrors, confirmPassword: '' }));
         }
     }
