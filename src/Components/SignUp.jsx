@@ -33,6 +33,10 @@ export default function SignUp({ onSwitchToLogin }) {
         if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
             errors.password = ('Password must contain at least one special character');
         }
+
+        if (password !== confirmPassword) {
+            errors.confirmPassword = 'Passwords do not match';
+          }
   
         if(Object.keys(errors).length === 0) {
             // Clear errors
@@ -50,13 +54,21 @@ export default function SignUp({ onSwitchToLogin }) {
         }
     };
 
-     const handleChangePassword = (e) => {
+    const handleChangePassword = (e) => {
         setPassword(e.target.value);
         // Clear email error when typing
         if (errors.password) {
             setErrors(prevErrors => ({ ...prevErrors, password: '' }));
         }
     };
+    const handleConfirmpassword = (e) => {
+        setConfirmPassword(e.target.value);
+         // Clear email error when typing
+         if (errors.password) {
+            setErrors(prevErrors => ({ ...prevErrors, confirmPassword: '' }));
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const errors = validateForm();
@@ -64,6 +76,7 @@ export default function SignUp({ onSwitchToLogin }) {
             // Clear email and password states
                 setEmail('');
                 setPassword('');
+                setConfirmPassword('');
 
             // submit to server here 
             alert('Form submitted successfully');
@@ -88,10 +101,12 @@ export default function SignUp({ onSwitchToLogin }) {
                     <div>
                         <input value={password} onChange={handleChangePassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Password" required/><br/>
                         {errors.password && <span className='text-red-600 text-xs'>{errors.password}</span>}
+                        <br/>
                     </div>
                     <div>
-                        <input value={password} onChange={handleChangePassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Confirm Password" required/><br/>
-                        {errors.password && <span className='text-red-600 text-xs'>{errors.password}</span>}
+                        <input value={confirmPassword} onChange={handleConfirmpassword} className="border-dotted border-2 w-72 px-3 rounded-xl py-1" type="password" placeholder="Confirm Password" required/><br/>
+                        {errors.confirmPassword && <span className='text-red-600 text-xs'>{errors.confirmPassword}</span>}
+                        <br/>
                     </div>
                     <button className="bg-gradient-to-r from-blue-300 to-blue-900 text-white font-bold w-72 px-3 rounded-xl py-1 mb-4" type="submit">SignUp</button>
 
