@@ -79,7 +79,7 @@ export default function Login({ onSwitchToSignup }) {
                 <form onSubmit={handleSubmit} className=" bg-white inline-block w-80 p-5 text-center rounded-lg">
                     <h1 className="text-2xl font-bold tracking-wider">Login</h1>
                     <div className="flex my-4 rounded-xl">
-                        <button  className="bg-gradient-to-r from-blue-900 to-blue-300 text-white p-2 rounded-xl inline-block w-36 cursor-pointer">Login</button>
+                        <button  className="bg-gradient-to-r from-blue-900 to-blue-400 text-white p-2 rounded-xl inline-block w-36 cursor-pointer">Login</button>
                         <button onClick={onSwitchToSignup} className="p-2 rounded-xl inline-block w-36 cursor-pointer">SignUp</button>
                     </div>
                     <div>
